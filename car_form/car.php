@@ -93,10 +93,10 @@ foreach ($cars as $car) {
                 echo "</ul>";
             }
 
-            if (empty($cars_matching_search))
+            if (empty($cars_matching_search)){
                echo "<h2>Sorry, no cars match your search at this time.</h2>";
-
-
+           }
+           
         ?>
     </ul>
 
