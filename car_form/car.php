@@ -4,15 +4,17 @@ class Car
     private $make_model;
     private $price;
     private $miles;
+    public $image;
 
     function worthBuying($max_price) {
         return $this->price < $max_price;
     }
 
-    function __construct($type_car, $value_car, $miles_car) {
+    function __construct($type_car, $value_car, $miles_car, $image_car) {
         $this->make_model = $type_car;
         $this->price = $value_car;
         $this->miles = $miles_car;
+        $this->image = $image_car;
     }
 
     function setMake_model($new_make){
@@ -49,10 +51,10 @@ class Car
     }
 }
 
-$porsche = new Car("2004 Porsche 911",114991,7862);
-$ford = new Car("2011 Ford F450",55885,14241);
-$lexus = new Car("2013 Lexus RX 350",44700,20000);
-$mercedes = new Car("Mercedes Benz CLS550",39900,37979);
+$porsche = new Car("2004 Porsche 911",114991,7862,"images/porsche.jpeg");
+$ford = new Car("2011 Ford F450",55885,14241,"images/ford.jpeg");
+$lexus = new Car("2013 Lexus RX 350",44700,20000,"images/lexus.jpeg");
+$mercedes = new Car("Mercedes Benz CLS550",39900,37979,"images/mercedes.jpeg");
 
 $mercedes->setPrice("99");
 
@@ -81,6 +83,7 @@ foreach ($cars as $car) {
                 $value = $car->getPrice();
                 $miles = $car->getMiles();
                 $make = $car->getMake_model();
+                echo "<img src='$car->image'>";
                 echo "<li> $make </li>";
                 echo "<ul>";
                     echo "<li> $$value </li>";
@@ -89,5 +92,6 @@ foreach ($cars as $car) {
             }
         ?>
     </ul>
+
 </body>
 </html>
