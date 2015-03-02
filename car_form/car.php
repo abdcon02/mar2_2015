@@ -1,9 +1,9 @@
 <?php
 class Car
 {
-    public $make_model;
-    public $price;
-    public $miles;
+    private $make_model;
+    private $price;
+    private $miles;
 
     function worthBuying($max_price) {
         return $this->price < $max_price;
@@ -14,27 +14,49 @@ class Car
         $this->price = $value_car;
         $this->miles = $miles_car;
     }
+
+    function setMake_model($new_make){
+        $string_model = (string) $new_make;
+         if ($string_model != 0) {
+             $this->make_model = $string_model;
+         }
+    }
+
+    function setMiles($new_miles){
+        $string_miles = (float) $new_miles;
+        if ($float_miles != 0) {
+            $this->miles = $float_miles;
+        }
+    }
+
+    function setPrice($new_price){
+        $float_price = (float) $new_price;
+         if ($float_price != 0) {
+            $this->price = $float_price;
+         }
+    }
+
+    function getMake_model(){
+        return $this->make_model;
+    }
+
+    function getMiles(){
+        return $this->miles;
+    }
+
+    function getPrice()    {
+        return $this->price;
+    }
 }
 
 $porsche = new Car("2004 Porsche 911",114991,7862);
-/*$porsche->make_model = "2004 Porsche 911";
-$porsche->price = 114991;
-$porsche->miles = 7864; */
-
 $ford = new Car("2011 Ford F450",55885,14241);
-/*$ford->make_model = "2011 Ford F450";
-$ford->price = 55885;
-$ford->miles = 14241;*/
-
 $lexus = new Car("2013 Lexus RX 350",44700,20000);
-/*$lexus->make_model = "2013 Lexus RX 350";
-$lexus->price = 44700;
-$lexus->miles = 20000;*/
-
 $mercedes = new Car("Mercedes Benz CLS550",39900,37979);
-/*$mercedes->make_model = "Mercedes Benz CLS550";
-$mercedes->price = 39900;
-$mercedes->miles = 37979;*/
+
+$mercedes->setPrice("99");
+
+
 
 $cars = array($porsche, $ford, $lexus, $mercedes);
 
@@ -56,10 +78,13 @@ foreach ($cars as $car) {
     <ul>
         <?php
             foreach ($cars_matching_search as $car) {
-                echo "<li> $car->make_model </li>";
+                $value = $car->getPrice();
+                $miles = $car->getMiles();
+                $make = $car->getMake_model();
+                echo "<li> $make </li>";
                 echo "<ul>";
-                    echo "<li> $$car->price </li>";
-                    echo "<li> Miles: $car->miles </li>";
+                    echo "<li> $$value </li>";
+                    echo "<li> Miles: $miles </li>";
                 echo "</ul>";
             }
         ?>
