@@ -8,27 +8,33 @@ class Car
     function worthBuying($max_price) {
         return $this->price < $max_price;
     }
+
+    function __construct($type_car, $value_car, $miles_car) {
+        $this->make_model = $type_car;
+        $this->price = $value_car;
+        $this->miles = $miles_car;
+    }
 }
 
-$porsche = new Car();
-$porsche->make_model = "2004 Porsche 911";
+$porsche = new Car("2004 Porsche 911",114991,7862);
+/*$porsche->make_model = "2004 Porsche 911";
 $porsche->price = 114991;
-$porsche->miles = 7864;
+$porsche->miles = 7864; */
 
-$ford = new Car();
-$ford->make_model = "2011 Ford F450";
+$ford = new Car("2011 Ford F450",55885,14241);
+/*$ford->make_model = "2011 Ford F450";
 $ford->price = 55885;
-$ford->miles = 14241;
+$ford->miles = 14241;*/
 
-$lexus = new Car();
-$lexus->make_model = "2013 Lexus RX 350";
+$lexus = new Car("2013 Lexus RX 350",44700,20000);
+/*$lexus->make_model = "2013 Lexus RX 350";
 $lexus->price = 44700;
-$lexus->miles = 20000;
+$lexus->miles = 20000;*/
 
-$mercedes = new Car();
-$mercedes->make_model = "Mercedes Benz CLS550";
+$mercedes = new Car("Mercedes Benz CLS550",39900,37979);
+/*$mercedes->make_model = "Mercedes Benz CLS550";
 $mercedes->price = 39900;
-$mercedes->miles = 37979;
+$mercedes->miles = 37979;*/
 
 $cars = array($porsche, $ford, $lexus, $mercedes);
 
