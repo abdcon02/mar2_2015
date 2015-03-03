@@ -13,6 +13,14 @@
             $this->weight = $pwei;
         }
 
+        function volume(){
+            return $this->width * $this->height * $this->length;
+        }
+
+        function costToShip(){
+            return number_format($this->weight * 4.25 , 2);
+        }
+
         function getLength(){
             return $this->length;
         }
@@ -36,6 +44,7 @@ $wid = $_GET["width"];
 $hei = $_GET["height"];
 $wei = $_GET["weight"];
 
+$package = new Parcel($len,$wid,$hei,$wei);
 
 ?>
 <!DOCTYPE html>
@@ -45,8 +54,28 @@ $wei = $_GET["weight"];
 </head>
 <body>
     <h1>Thanks for entering your parcel information, below are our calculations:</h1>
-
-<?php echo $len;?>
+    <h3>Just to be clear, the info you entered was:</h3>
+    <ul>
+        <li>Length: <?= $len;?></li>
+        <li>Width: <?= $wid; ?></li>
+        <li>Height: <?= $hei;?></li>
+        <li>Weight: <?= $wei;?></li>
+    </ul>
+    <h3>This is the Volume of your Parcel!</h3>
+        <ul>
+    <?php
+        $vol = $package->volume();
+        echo "<li>$vol</li>";
+    ?>
+        </ul>
+    <h3>This is the cost of shipping your parcel to Mongolia:</h3>
+    <p>(Our rate is $4.25 per oz for international shipping)</p>
+        <ul>
+    <?php
+        $cost = $package->costToShip();
+        echo "<li>$$cost </li>";
+    ?>
+        </ul>
 
 </body>
 </html>
